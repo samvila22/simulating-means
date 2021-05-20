@@ -1,1 +1,21 @@
-3
+sample_means_ns <- function(vec, reps, ns) {
+  vector <- c()
+  b <- 1
+  a <- 1
+  for (i in ns) {
+    vector <- c(vector, many_sample_means(vec, i, reps))
+  }
+  vect <- c()
+  while (length(vect) != length(vector)) {
+    while (a <= reps) {
+      while (b <= length(vector)) {
+      vect <- c(vect, vector[b])
+      b <- b + reps
+      }
+    b <- a + 1
+    a <- a + 1
+    }
+  }
+  daf <- data.frame(ns, vect)
+  return(daf)
+}
